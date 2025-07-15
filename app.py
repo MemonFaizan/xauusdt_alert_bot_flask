@@ -1,20 +1,18 @@
 from flask import Flask
 import threading
-import bot  # your original logic from bot.py
+import bot  # your main signal script file
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "✅ Gold Sniper Alert Bot Running on Render with Flask"
+    return "✅ Gold Sniper Bot Running!"
 
+# Directly start thread without using decorator
 def run_bot():
     bot.main()
 
-@app.before_first_request
-def activate_bot():
-    thread = threading.Thread(target=run_bot)
-    thread.start()
-
+# Start thread before app.run()
 if __name__ == "__main__":
+    threading.Thread(target=run_bot).start()
     app.run(host="0.0.0.0", port=10000)
