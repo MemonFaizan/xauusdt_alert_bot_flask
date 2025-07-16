@@ -44,7 +44,7 @@ def get_candle_data(interval="5min"):
 
 # === TELEGRAM ALERT ===
 def send_telegram_alert(signal, price, tp, sl, timeframe):
-    message = f"""🚨 [ALERT - {datetime.now().strftime("%I:%M %p")}]
+    message = f"""🚨 [ALERT]
 📈 {signal.upper()} - XAU/USD
 💰 CMP: ₹{price:.2f}
 🎯 TP: ₹{tp:.2f}
